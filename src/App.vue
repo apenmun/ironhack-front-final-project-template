@@ -2,6 +2,7 @@
   <section>
     <router-view class="app-main" />
   </section>
+  <h1>Holaaaa</h1>
 </template>
 
 <script setup>
