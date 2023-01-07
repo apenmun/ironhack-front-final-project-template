@@ -21,7 +21,7 @@ export const useUserStore = defineStore("user", {
       if (error) throw error;
       if (user) this.user = user;
     },
-    // Hacer sign in
+    // Hacer sign in/log in
     // Hacer log out
     persist: {
       enabled: true,

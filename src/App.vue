@@ -5,17 +5,6 @@
     <router-link to="/Home">Home</router-link>
   </section>
   
-  <!-- <h1>jdklj</h1>
-  <h1>coco</h1>
-  <form class="authForm"> 
-       <input type="email" name="email" />
-       <input type="password" />
-       <input type="password" />
-       <input type="submit" value="Sign up">
-     </form>
-     <a href="/">Link a otra página</a> -->
-
-  
 </template>
 
 <script setup>
