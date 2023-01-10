@@ -36,6 +36,9 @@
   </form>
 </template>
 
-<script setup></script>
+<script setup>
+import { useUserStore } from '../store/user'
+const userStore = useUserStore()
+</script>
 
 <style lang="scss" scoped></style>
