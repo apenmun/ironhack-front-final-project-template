@@ -1,13 +1,15 @@
 <template>
+    <Header></Header>
+ 
     <div>
-        this is home - {{ userStore.user }}
+        this is home - 
     </div>
+
+    
 </template>
 
 <script setup>
-    import { useUserStore } from '../store/user'
-
-    const userStore = useUserStore()
+import Header from '../components/Header.vue';
 </script>
 
 <style lang="scss" scoped>

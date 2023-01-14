@@ -11,16 +11,33 @@
       </a>
       <h1 class="text-3xl font-bold text-gray-900">To Do Light</h1>
       <nav>
-        <ul class="flex items-center">
-          <li>
-            <a class="text-gray-700 hover:text-turquoise-500" href="#">Sign up</a>
-          </li>
-          <li>
-            <a class="text-gray-700 hover:text-turquoise-500 ml-4" href="#"
-              >Home</a
-            >
-          </li>
-        </ul>
+        <router-view class="app-main" />
+
+        <div class="flex items-center center">
+          <button
+            class="text-white bg-gray-600 rounded-md py-2 px-4"
+            type="submit"
+          >
+            <router-link to="/">Authentication</router-link>
+          </button>
+
+          <button
+            class="text-turquoise bg-emerald-100 rounded-md py-2 px-4"
+            type="submit"
+          >
+            <router-link to="/Home">Home</router-link>
+          </button>
+          <button
+            @click="
+              userStore.logOut();
+              router.push('/');
+            "
+            class="text-turquoise bg-teal-300 rounded-md py-2 px-4"
+            type="submit"
+          >
+            Log Out
+          </button>
+        </div>
       </nav>
     </div>
   </header>
