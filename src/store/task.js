@@ -21,11 +21,12 @@ export const useTaskStore = defineStore("tasks", {
     },
     // Hacer POST
     async addPost(user_id, title){
+      console.log(user_id, title)
       try {
-        const {error} = await supabase
+        const {data, error} = await supabase
         .from("tasks")
-        .insert(user_id, title);
-        this.fetchTasks()
+        .insert({user_id, title});
+        await this.fetchTasks()
       } catch (error) {
         console.log(error)
       }

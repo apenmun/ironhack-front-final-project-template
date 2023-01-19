@@ -11,6 +11,8 @@
     <input class="my-2 bg-white rounded-md border-gray-400 focus:outline-none focus:shadow-outline-blue appearance-none block w-full px-3 py-2 leading-tight text-gray-700" type="text" placeholder="Title" v-model="title" />
     <button class="flex items-center justify-between text-turquoise bg-emerald-100 rounded-md py-2 px-4" type="submit">Create task</button>
   </form>
+
+  <Printtask></Printtask>
   this is home
 </template>
 
@@ -19,22 +21,25 @@ import Header from "../components/Header.vue";
 import { useUserStore } from "../store/user";
 import { useTaskStore } from "../store/task";
 import { ref } from "vue";
+import Printtask from "../components/Printtask.vue";
 
-//import { useRouter } from 'vue-router';
 //import { supabase } from '../supabase';
+//import { useRouter } from 'vue-router';
+
 
 const user = useUserStore();
 const taskStore = useTaskStore();
-
-taskStore.fetchTasks();
-
+console.log(user.user)
 const title = ref("");
 
-const handleSubmit = () => {
-    console.log('formulario')
+const handleSubmit = async () => {
+  //hacer una llamada a fetchUser y obtener el id del usuario
+//const user = await userStore.fetchUser();
+   await taskStore.addPost(user.user.id, title.value)
+   console.log(user)
 }
 
-//119. Agregar Documentos 5:55
+
 </script>
 
 <style lang="scss" scoped></style>
