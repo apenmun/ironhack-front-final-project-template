@@ -12,6 +12,8 @@
     <button class="flex items-center justify-between text-turquoise bg-emerald-100 rounded-md py-2 px-4" type="submit">Create task</button>
   </form>
 
+  
+
   <Printtask></Printtask>
   this is home
 </template>
@@ -36,6 +38,7 @@ const handleSubmit = async () => {
   //hacer una llamada a fetchUser y obtener el id del usuario
 //const user = await userStore.fetchUser();
    await taskStore.addPost(user.user.id, title.value)
+   console.log('TASK STORE DESPUES DEL POST',taskStore.tasks)
    console.log(user)
 }
 

@@ -43,6 +43,12 @@
   </header>
 </template>
 
-<script setup></script>
+<script setup>
+import { useUserStore } from "../store/user";
+import { useRouter } from "vue-router";
+
+const userStore = useUserStore();
+const router = useRouter();
+</script>
 
 <style lang="scss" scoped></style>
