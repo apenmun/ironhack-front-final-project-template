@@ -18,6 +18,7 @@ export const useTaskStore = defineStore("tasks", {
           .select("*")
           .order("id", { ascending: false });
         this.tasks = tasks;
+        return tasks;
       } catch (error) {
         console.log(error);
       }
@@ -35,16 +36,23 @@ export const useTaskStore = defineStore("tasks", {
       }
     },
     // Hacer el PUT (edit)
+    async editPost() {
+      try {
+        const { error } = await supabase
+          .from("task")
+          .update({ user_id, title })
+          .eq("id", id);
+      } catch (error) {
+        console.log(error);
+      }
+    },
     // Hacer el delete
-    async deletePost(user_id, title) {
-      try{
-      const { error } = await supabase
-      .from("tasks")
-      .delete()
-      .eq("id", 1);
-    } catch (error){
-      console.log(error)
-    }
+    async deletePost(id) {
+      try {
+        const { error } = await supabase.from("tasks").delete().eq("id", id);
+      } catch (error) {
+        console.log(error);
+      }
     },
     // Hacer el PUT (cambiar entre completada y pendiente)
   },
