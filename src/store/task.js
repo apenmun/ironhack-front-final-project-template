@@ -36,11 +36,11 @@ export const useTaskStore = defineStore("tasks", {
       }
     },
     // Hacer el PUT (edit)
-    async editPost() {
+    async editPost(id, title) {
       try {
         const { error } = await supabase
-          .from("task")
-          .update({ user_id, title })
+          .from("tasks")
+          .update({ title })
           .eq("id", id);
       } catch (error) {
         console.log(error);
@@ -55,5 +55,16 @@ export const useTaskStore = defineStore("tasks", {
       }
     },
     // Hacer el PUT (cambiar entre completada y pendiente)
+    async updatePost(id, is_complete) {
+      try {
+        const { error } = await supabase
+          .from("tasks")
+          .update({ is_complete })
+          .eq("id", id);
+          await this.fetchTasks();
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 });

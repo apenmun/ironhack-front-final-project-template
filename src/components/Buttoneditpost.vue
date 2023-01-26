@@ -9,10 +9,10 @@
   </template>
   <script setup>
   
-  const emits = defineEmits(["changeEvent"]);
+  const emits = defineEmits(["changeToInput"]);
   
   function change() {
-    emits("changeEvent")
+    emits("changeToInput")
   }
   </script>
   

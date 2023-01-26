@@ -50,7 +50,7 @@ async logOut () {
   try{
     const { error } = await supabase.auth.signOut();
     if (error) throw error;
-    if (user) this.user= null;
+    if (this.user) this.user= null;
     return{
       status:200
     };

@@ -3,7 +3,7 @@
     class="bg-emerald-100 py-8 px-6 rounded-md my-5"
     style="width: 50%; margin: 2% auto"
     v-for="task in tasks"
-  >
+  >  
     <p
       v-if="editTask"
       class="my-2 bg-white rounded-md border-gray-400 focus:outline-none focus:shadow-outline-blue appearance-none block w-full px-3 py-2 leading-tight text-gray-700"
@@ -14,8 +14,9 @@
     <div v-else>
       <input
         class="my-2 bg-white rounded-md border-gray-400 focus:outline-none focus:shadow-outline-blue appearance-none block w-full px-3 py-2 leading-tight text-gray-700"
+        v-model="task.title"
       />
-      <button @click="handleClickEdit">Confirm</button>
+      <button @click="handleClickEdit(task.id, task.title)">Confirm</button>
     </div>
 
     <div class="flex flex-row items-center justify-between">
@@ -27,13 +28,31 @@
         Delete
       </button>
 
-      <button
+      <ButtonEditPost @change-to-input="changeToInput" />
+      <!-- Esto es un comentario  <button
         @change-event="changeToInput"
         class="text-white bg-gray-600 rounded-md py-2 px-4"
         type="submit"
       >
         Edit
-      </button>
+      </button>  
+      <p
+          class="text-gray-600"
+          v-if="task.is_completed"
+          style="text-decoration: line-through"
+        >
+          {{ task.title }}
+        </p>
+        <p class="text-gray-600" v-else>{{ task.title }}</p>-->
+
+      <div class="flex flex-row items-center">
+        <input
+          type="checkbox"
+          v-model="task.is_completed"
+          @changeToComplete="handleClickCheckbox"
+        />
+       
+      </div>
     </div>
   </div>
 </template>
@@ -42,6 +61,7 @@
 import { ref } from "vue";
 import { useUserStore } from "../store/user";
 import { useTaskStore } from "../store/task";
+import ButtonEditPost from "./ButtonEditPost.vue";
 
 const user = useUserStore();
 const taskStore = useTaskStore();
@@ -67,15 +87,30 @@ const handleClick = async (id) => {
 };
 
 const editTask = ref(true);
+const completeTask = ref(false);
 
 function changeToInput() {
+  console.log(editTask.value);
   editTask.value = !editTask.value;
-  console.log ("EDIT POST", editTask.value = !editTask.value)
+  console.log("EDIT POST", editTask.value);
 }
 
 const handleClickEdit = async (id, title) => {
   await taskStore.editPost(id, title);
   await getTasks();
+  editTask.value = true;
+};
+
+function changeToComplete() {
+  console.log(completeTask.value);
+  completeTask.value = !completeTask.value;
+  console.log("COMPLETE POST", completeTask.value);
+}
+
+const handleClickCheckbox = async (id, is_completed) => {
+  await taskStore.updatePost(id, is_completed);
+  await getTasks();
+  completeTask.value = false;
 };
 </script>
 
