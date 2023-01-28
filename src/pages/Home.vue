@@ -16,6 +16,7 @@
 
   <Printtask></Printtask>
   this is home
+  <Footer></Footer>
 </template>
 
 <script setup>
@@ -24,6 +25,7 @@ import { useUserStore } from "../store/user";
 import { useTaskStore } from "../store/task";
 import { ref } from "vue";
 import Printtask from "../components/Printtask.vue";
+import Footer from "../components/Footer.vue";
 
 //import { supabase } from '../supabase';
 //import { useRouter } from 'vue-router';

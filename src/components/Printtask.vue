@@ -2,7 +2,7 @@
   <div
     class="bg-emerald-100 py-8 px-6 rounded-md my-5"
     style="width: 50%; margin: 2% auto"
-    v-for="task in tasks"
+    v-for="task in taskStore.tasks"
   >  
     <p
       v-if="editTask"
@@ -48,8 +48,8 @@
       <div class="flex flex-row items-center">
         <input
           type="checkbox"
-          v-model="task.is_completed"
-          @changeToComplete="handleClickCheckbox"
+          v-model="task.is_complete"
+          @change="handleClickCheckbox(task.id, task.is_complete)"
         />
        
       </div>
@@ -79,6 +79,7 @@ console.log(user.user);
 
 console.log(taskStore.tasks);
 
+
 const handleClick = async (id) => {
   console.log(id);
   await taskStore.deletePost(id);
@@ -87,7 +88,7 @@ const handleClick = async (id) => {
 };
 
 const editTask = ref(true);
-const completeTask = ref(false);
+
 
 function changeToInput() {
   console.log(editTask.value);
@@ -101,17 +102,14 @@ const handleClickEdit = async (id, title) => {
   editTask.value = true;
 };
 
-function changeToComplete() {
-  console.log(completeTask.value);
-  completeTask.value = !completeTask.value;
-  console.log("COMPLETE POST", completeTask.value);
-}
+const handleClickCheckbox = async (id, is_complete) => {
+  await taskStore.updatePost(id, is_complete);
+  //await getTasks();
+};  
 
-const handleClickCheckbox = async (id, is_completed) => {
-  await taskStore.updatePost(id, is_completed);
-  await getTasks();
-  completeTask.value = false;
-};
 </script>
+
+
+
 
 <style lang="scss" scoped></style>

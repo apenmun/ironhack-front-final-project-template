@@ -10,7 +10,7 @@
     Change
   </button>-->
   <Button @change-event="change"/>
-  <div>this is auth</div>
+  <Footer></Footer>
 </template>
 
 <script setup>
@@ -19,6 +19,7 @@ import Header from "../components/Header.vue";
 import Login from "../components/Login.vue";
 import Signup from "../components/Signup.vue";
 import Button from "../components/Button.vue";
+import Footer from "../components/Footer.vue";
 
 const login = ref(true);
 
