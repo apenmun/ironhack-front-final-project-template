@@ -61,7 +61,7 @@
 import { ref } from "vue";
 import { useUserStore } from "../store/user";
 import { useTaskStore } from "../store/task";
-import ButtonEditPost from "./ButtonEditPost.vue";
+import ButtonEditPost from "./Buttoneditpost.vue";
 
 const user = useUserStore();
 const taskStore = useTaskStore();
