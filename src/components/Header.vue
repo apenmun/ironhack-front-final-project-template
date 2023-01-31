@@ -14,19 +14,19 @@
         <router-view class="app-main" />
 
         <div class="flex items-center center">
-          <button
+          <!--<button
             class="text-white bg-gray-600 rounded-md py-2 px-4"
             type="submit"
           >
             <router-link to="/">Authentication</router-link>
-          </button>
+          </button>-->
 
-          <button
+          <!--<button
             class="text-turquoise bg-emerald-100 rounded-md py-2 px-4"
             type="submit"
           >
-            <router-link to="/Home">Home</router-link>
-          </button>
+            <router-link to="/Home">Home</router-link> 
+          </button>-->
           <button
             @click="
               userStore.logOut();

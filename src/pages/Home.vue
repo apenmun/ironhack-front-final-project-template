@@ -15,7 +15,7 @@
   
 
   <Printtask></Printtask>
-  this is home
+
   <Footer></Footer>
 </template>
 

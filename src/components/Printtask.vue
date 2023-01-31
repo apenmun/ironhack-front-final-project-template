@@ -3,7 +3,7 @@
     class="bg-emerald-100 py-8 px-6 rounded-md my-5"
     style="width: 50%; margin: 2% auto"
     v-for="task in taskStore.tasks"
-  >  
+  >
     <p
       v-if="editTask"
       class="my-2 bg-white rounded-md border-gray-400 focus:outline-none focus:shadow-outline-blue appearance-none block w-full px-3 py-2 leading-tight text-gray-700"
@@ -16,7 +16,7 @@
         class="my-2 bg-white rounded-md border-gray-400 focus:outline-none focus:shadow-outline-blue appearance-none block w-full px-3 py-2 leading-tight text-gray-700"
         v-model="task.title"
       />
-      <button @click="handleClickEdit(task.id, task.title)">Confirm</button>
+      <button class="flex justify-end text-turquoise bg-slate-100 border-teal-300 rounded-md my-2 py-2 px-4" @click="handleClickEdit(task.id, task.title)">Confirm</button>
     </div>
 
     <div class="flex flex-row items-center justify-between">
@@ -45,14 +45,14 @@
         </p>
         <p class="text-gray-600" v-else>{{ task.title }}</p>-->
 
-      <div class="flex flex-row items-center">
+      <label class="flex items-center">
         <input
           type="checkbox"
           v-model="task.is_complete"
           @change="handleClickCheckbox(task.id, task.is_complete)"
+          class="form-checkbox h-6 w-6"
         />
-       
-      </div>
+      </label>
     </div>
   </div>
 </template>
@@ -79,7 +79,6 @@ console.log(user.user);
 
 console.log(taskStore.tasks);
 
-
 const handleClick = async (id) => {
   console.log(id);
   await taskStore.deletePost(id);
@@ -88,7 +87,6 @@ const handleClick = async (id) => {
 };
 
 const editTask = ref(true);
-
 
 function changeToInput() {
   console.log(editTask.value);
@@ -105,11 +103,7 @@ const handleClickEdit = async (id, title) => {
 const handleClickCheckbox = async (id, is_complete) => {
   await taskStore.updatePost(id, is_complete);
   //await getTasks();
-};  
-
+};
 </script>
-
-
-
 
 <style lang="scss" scoped></style>
