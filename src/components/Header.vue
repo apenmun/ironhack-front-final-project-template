@@ -5,7 +5,7 @@
         <span class="sr-only">Your Company</span>
         <img
           class="h-8 w-auto sm:h-20"
-          src="../assets/DALL·E 2023-01-06 10.27.44.png"
+          src="../assets/Todolight.png"
           alt=""
         />
       </a>
